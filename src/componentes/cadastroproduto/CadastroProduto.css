@@ -1,0 +1,95 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-family: 'Georgia', serif;
+    color: #003366; /* Azul marinho para títulos */
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  
+  /* Cadastro Container */
+  .cadastro-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form div {
+    width: 100%; /* Garante que as divs ocupem toda a largura do formulário */
+}
+  
+  input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #003366; /* Azul marinho para quando o campo é selecionado */
+  }
+  
+  input[type="submit"] {
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #002244;
+    transform: translateY(-2px);
+  }
+  
+  input[type="submit"]:active {
+    background-color: #001f33;
+    transform: translateY(2px);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .cadastro-container {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 28px;
+    }
+  }
+  

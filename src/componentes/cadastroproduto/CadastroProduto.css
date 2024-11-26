@@ -1,95 +1,69 @@
-/* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  h1 {
-    font-family: 'Georgia', serif;
-    color: #003366; /* Azul marinho para títulos */
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 40px;
-  }
-  
-  /* Cadastro Container */
-  .cadastro-container {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  form div {
-    width: 100%; /* Garante que as divs ocupem toda a largura do formulário */
+/* CadastroProduto.css */
+
+/* Configurações de layout global */
+/* Configurações de layout global */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
 }
-  
-  input[type="text"] {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
+
+.cadastro-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 500px;
+  margin: auto;
+  width:100%
+}
+
+.cadastro-container h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para o formulário */
+.cadastro-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cadastro-container input[type="text"] {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.cadastro-container input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+.cadastro-container input[type="submit"] {
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+}
+
+.cadastro-container input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.cadastro-container input[type="submit"]:active {
+  background-color: #004085;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .cadastro-container {
+      padding: 1rem;
   }
-  
-  input[type="text"]:focus {
-    border-color: #003366; /* Azul marinho para quando o campo é selecionado */
-  }
-  
-  input[type="submit"] {
-    background-color: #003366;
-    color: white;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #002244;
-    transform: translateY(-2px);
-  }
-  
-  input[type="submit"]:active {
-    background-color: #001f33;
-    transform: translateY(2px);
-  }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .cadastro-container {
-      padding: 20px;
-    }
-  
-    h1 {
-      font-size: 28px;
-    }
-  }
-  
+}

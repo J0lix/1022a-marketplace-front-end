@@ -5,8 +5,8 @@ import './CadastroProduto.css';
 function CadastroProduto(){
     const navigate = useNavigate()
     const [id,setId] = useState("")
-    const [nome,setNome] = useState("")
-    const [descricao,setDescricao] = useState("")
+    const [titulo,setTitulo] = useState("")
+    const [autor,setAutor] = useState("")
     const [preco,setPreco] = useState("")
     const [imagem,setImagem] = useState("")
 
@@ -20,8 +20,8 @@ function CadastroProduto(){
                 },
                 body:JSON.stringify({
                     id:id,
-                    nome:nome,
-                    descricao:descricao,
+                    titulo:titulo,
+                    autor:autor,
                     preco:preco,
                     imagem:imagem
                 })
@@ -44,12 +44,12 @@ function CadastroProduto(){
         setId(event.target.value)
     }
 
-    function handleNome(event:ChangeEvent<HTMLInputElement>){
-        setNome(event.target.value)
+    function handleTitulo(event:ChangeEvent<HTMLInputElement>){
+        setTitulo(event.target.value)
     }
 
-    function handleDescricao(event:ChangeEvent<HTMLInputElement>){
-        setDescricao(event.target.value)
+    function handleAutor(event:ChangeEvent<HTMLInputElement>){
+        setAutor(event.target.value)
     }
 
     function handlePreco(event:ChangeEvent<HTMLInputElement>){
@@ -68,10 +68,10 @@ function CadastroProduto(){
                     <input placeholder="Id" type="text" name="id" id="id" onChange={handleId} />
                 </div>
                 <div>
-                    <input placeholder="Nome" type="text" name="nome" id="nome" onChange={handleNome} />
+                    <input placeholder="Título" type="text" name="titulo" id="titulo" onChange={handleTitulo} />
                 </div>
                 <div>
-                    <input placeholder="Descrição" type="text" name="descricao" id="descricao" onChange={handleDescricao} />
+                    <input placeholder="Autor" type="text" name="autor" id="autor" onChange={handleAutor} />
                 </div>
                 <div>
                     <input placeholder="Preço" type="text" name="preco" id="preco" onChange={handlePreco} />

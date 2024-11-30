@@ -60,6 +60,10 @@ function App() {
           }
         </div>
       </div>
+      <footer className="site-footer"> <p>&copy; 2024 Aurea Books. Todos os direitos reservados.</p> 
+            <p>Criadoras: Bianca de Oliveira Moraes e Júlia Strey Bem</p> 
+            <p>Emails: bianca.moraes@estudante.ifms.edu.br, julia.bem@estudante.ifms.edu.br</p> 
+            <p>Email da loja: aurea.books@gmail.com</p>  </footer>
     </>
   )
 }

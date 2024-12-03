@@ -1,6 +1,6 @@
 /* Estilos para o cabeçalho */
 .site-header {
-  background-color: #004b96;
+  background-color: #1486f8;
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -131,4 +131,16 @@
   font-weight: bold;
   margin: 10px 0;
   transform: scale(1.3); 
+}
+
+.publi {
+  display: block;
+  width: 100%; /* Ajuste a largura para metade da tela */
+ /* max-width: 600px; *//* Limita o tamanho máximo da imagem */
+  height: auto; /* Mantém a proporção original */
+  margin: 20px auto; /* Centraliza a imagem horizontalmente e adiciona espaçamento vertical */
+  padding: 0;
+  border: 2px solid #000; /* Adiciona borda para destaque */
+  border-radius: 10px; /* Cantos arredondados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar um leve destaque */
 }

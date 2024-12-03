@@ -43,6 +43,7 @@ function App() {
 
       {/* Listagem de Produtos */}
       <div className="produtos-container">
+      <img src="publi.png" alt="aparece pfv" className="publi" />
         <h1 className='titulo-produto'>Livros</h1>
         <div className="produtos-list">
           {

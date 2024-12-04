@@ -29,6 +29,11 @@ function App() {
           <h1>Aurea Books</h1>
         </div>
         <nav className="navigation">
+
+        <div className="search-container">
+          <input type="text" placeholder="Buscar livro..."/>
+        <button>Buscar</button>
+    </div>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#produtos">Produtos</a></li>
@@ -46,19 +51,19 @@ function App() {
       <img src="publi.png" alt="aparece pfv" className="publi" />
         <h1 className='titulo-produto'>Livros</h1>
         <div className="produtos-list">
-          {
-            produtos.map(produto => (
-              <div key={produto.id} className="produto-item">
-                <h3 className="produto-titulo">{produto.titulo}</h3>
-                <div className='container-imagem'>
-                  <img src={produto.imagem} alt="Imagem do produto" />
-                </div>
-                <p className="produto-preco">{produto.preco}</p>
-                <p className="produto-autor">{produto.autor}</p>
-                <button className="botao-comprar">Comprar</button>
-              </div>
-            ))
-          }
+        {
+  produtos.map(produto => (
+    <div key={produto.id} className="produto-item">
+      <h3 className="produto-titulo">{produto.titulo}</h3>
+      <div className='container-imagem'>
+        <img src={produto.imagem} alt="Imagem do produto" />
+      </div>
+      <p className="produto-preco">R$ {produto.preco}</p> {/* Adiciona o R$ antes do preço */}
+      <p className="produto-autor">{produto.autor}</p>
+      <button className="botao-comprar">Comprar</button>
+    </div>
+  ))
+}
         </div>
       </div>
       <footer className="site-footer"> <p>&copy; 2024 Aurea Books. Todos os direitos reservados.</p> 

@@ -1,50 +1,30 @@
-# React + TypeScript + Vite
+Passo a passo para rodar o projeto localmente:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Back-End:
+Ligue o Laragon;
+Abra o VS Code;
+Abra a pasta “1022A-marketplace”;
+Abra o terminal e digite: npm install;
 
-Currently, two official plugins are available:
+Front-End:
+Abra o VS Code;
+Abra a pasta “1022A-marketplace-front-end”;
+Abra o terminal e digite: npm run dev;
+Abra o link apresentado no terminal;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Descrição do Tema Escolhido pelo Grupo
+O tema escolhido é o desenvolvimento de um site de livraria online chamado Áurea Books. A ideia central do projeto é oferecer uma plataforma onde os usuários possam acessar informações sobre livros disponíveis para compra ou leitura. O objetivo principal é facilitar o gerenciamento do acervo de livros e permitir que os visitantes visualizem as opções disponíveis.
+Descrição do Tema Escolhido e das Funcionalidades Implementadas
+O site Áurea Books é uma livraria online que inicialmente conta com funcionalidades voltadas para o gerenciamento básico de livros. As funcionalidades implementadas incluem:
+Cadastrar Livro
+Permite que novos livros sejam adicionados ao catálogo da livraria.
+O cadastro inclui informações básicas sobre o livro, como título, autor, imagem do livro e preço.
+Essa funcionalidade é essencial para manter o acervo sempre atualizado e organizado.
+Listar Livros
+Exibe todos os livros cadastrados no sistema em uma lista de fácil navegação.
+Inclui detalhes dos livros, como título, autor e outras informações pertinentes.
+Essa funcionalidade é voltada para os usuários que desejam explorar o acervo da livraria.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```

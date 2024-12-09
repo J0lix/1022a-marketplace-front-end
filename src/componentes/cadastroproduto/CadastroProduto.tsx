@@ -21,7 +21,7 @@ function CadastroProduto() {
 
         try {
             // Faz uma requisição POST para a API para cadastrar um novo livro
-            const resposta = await fetch("http://localhost:8000/livros", {
+            const resposta = await fetch("https://one022a-marketplace-33kr.onrender.com", {
                 method: "POST", // Método HTTP POST para envio de dados
                 headers: {
                     "Content-Type": "application/json" // Indica que o corpo da requisição é JSON

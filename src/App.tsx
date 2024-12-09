@@ -18,7 +18,7 @@ function App() {
 
   // Hook para carregar os produtos da API quando o componente for montado
   useEffect(() => {
-    fetch("http://localhost:8000/livros") // Faz uma requisição para a API
+    fetch("https://one022a-marketplace-33kr.onrender.com/livros") // Faz uma requisição para a API
       .then(resposta => resposta.json()) // Converte a resposta para JSON
       .then(dados => setProdutos(dados)); // Atualiza o estado com os produtos recebidos
   });
@@ -31,6 +31,11 @@ function App() {
           <h1>Aurea Books</h1> {/* Nome do site */}
         </div>
         <nav className="navigation">
+          {/* Campo de busca de livros */}
+          <div className="search-container">
+            <input type="text" placeholder="Buscar livro..." /> {/* Campo de texto */}
+            <button>Buscar</button> {/* Botão de busca */}
+          </div>
           {/* Links de navegação */}
           <ul>
             <li><a href="#home">Home</a></li>

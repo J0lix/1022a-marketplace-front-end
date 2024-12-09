@@ -1,26 +1,47 @@
-// Importação de bibliotecas essenciais
-import { useEffect, useState } from 'react'; // Hooks do React para efeitos colaterais e gerenciamento de estado
-import { Link } from 'react-router-dom'; // Ferramenta para navegação entre páginas
-import './App.css'; // Arquivo de estilos específicos para o componente
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './App.css';
 
-// Tipo para definir o formato de um produto
 type ProdutoType = {
-  id: number; // Identificador único do produto
-  titulo: string; // Título do livro
-  preco: string; // Preço do livro
-  autor: string; // Nome do autor do livro
-  imagem: string; // URL da imagem do livro
+  id: number;
+  titulo: string;
+  preco: string;
+  autor: string;
+  imagem: string;
+  categoria_id: number;
+  descricao: string;
+};
+
+type CategoriaType = {
+  id: number;
+  nome: string;
 };
 
 function App() {
-  // Estado para armazenar a lista de produtos
+  // Estados para armazenar livros e categorias
   const [produtos, setProdutos] = useState<ProdutoType[]>([]);
+  const [categorias, setCategorias] = useState<CategoriaType[]>([]);
 
-  // Hook para carregar os produtos da API quando o componente for montado
+  // Carregar produtos e categorias da API
   useEffect(() => {
-    fetch("https://one022a-marketplace-33kr.onrender.com/livros") // Faz uma requisição para a API
-      .then(resposta => resposta.json()) // Converte a resposta para JSON
-      .then(dados => setProdutos(dados)); // Atualiza o estado com os produtos recebidos
+    // Carregar livros
+    fetch("https://one022a-marketplace-33kr.onrender.com/livros")
+      .then(resposta => resposta.json())
+      .then(dados => setProdutos(dados));
+
+    // Carregar categorias
+    fetch("https://one022a-marketplace-33kr.onrender.com/categorias")
+      .then(resposta => resposta.json())
+      .then(dados => setCategorias(dados));
+  }, []);
+
+  // Agrupar livros por categoria
+  const livrosPorCategoria = categorias.map(categoria => {
+    const livrosDaCategoria = produtos.filter(produto => produto.categoria_id === categoria.id);
+    return {
+      categoria,
+      livros: livrosDaCategoria
+    };
   });
 
   return (
@@ -28,11 +49,9 @@ function App() {
       {/* Cabeçalho do site */}
       <header className="site-header">
         <div className="logo">
-          <h1>Aurea Books</h1> {/* Nome do site */}
+          <h1>Aurea Books</h1>
         </div>
         <nav className="navigation">
-        
-          {/* Links de navegação */}
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#produtos">Produtos</a></li>
@@ -43,26 +62,27 @@ function App() {
         </nav>
       </header>
 
-      {/* Listagem de Produtos */}
-      <div className="produtos-container">
-        <img src="publi.png" alt="aparece pfv" className="publi" /> {/* Imagem promocional */}
-        <h1 className='titulo-produto'>Livros</h1> {/* Título da seção */}
-        <div className="produtos-list">
-          {/* Renderização da lista de produtos */}
-          {
-            produtos.map(produto => (
-              <div key={produto.id} className="produto-item">
-                <h3 className="produto-titulo">{produto.titulo}</h3> {/* Título do livro */}
-                <div className='container-imagem'>
-                  <img src={produto.imagem} alt="Imagem do produto" /> {/* Imagem do livro */}
+      {/* Seção de Categorias de Livros */}
+      <div className="categorias-container">
+        {livrosPorCategoria.map((categoriaComLivros) => (
+          <div key={categoriaComLivros.categoria.id} className="categoria">
+            <h2>{categoriaComLivros.categoria.nome}</h2>
+            <div className="livros-scroll">
+              {categoriaComLivros.livros.map((produto) => (
+                <div key={produto.id} className="produto-item">
+                  <h3 className="produto-titulo">{produto.titulo}</h3>
+                  <div className='container-imagem'>
+                    <img src={produto.imagem} alt={produto.titulo} />
+                  </div>
+                  <p className="produto-preco">R$ {produto.preco}</p>
+                  <p className="produto-autor"><strong> Autor: </strong> {produto.autor}</p>
+                  <p className="produto-descricao"><strong> Descrição: </strong>{produto.descricao}</p>
+                  <button className="botao-comprar">Comprar</button>
                 </div>
-                <p className="produto-preco">R$ {produto.preco}</p> {/* Preço com "R$" */}
-                <p className="produto-autor">{produto.autor}</p> {/* Nome do autor */}
-                <button className="botao-comprar">Comprar</button> {/* Botão de compra */}
-              </div>
-            ))
-          }
-        </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Rodapé do site */}

@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   height: 80px;
-  position: relative; /* Permite posicionamento absoluto dos botões */
+  position: relative;
 }
 
 .site-header .logo {
@@ -16,7 +16,7 @@
 
 .site-header .navigation {
   position: absolute;
-  right: 20px; /* Posiciona a navegação no lado direito */
+  right: 20px;
 }
 
 .site-header .navigation ul {
@@ -44,81 +44,96 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-
 }
-.site-header .cadastro-botao:hover {
 
+.site-header .cadastro-botao:hover {
   background-color: #005bb5;
   color: white;
 }
 
-/* Container de Produtos */
-.produtos-container {
+/* Container de Categorias */
+.categorias-container {
   padding: 20px;
   max-width: 1100px;
   margin: auto;
 }
 
-.produtos-container .titulo-produto {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+/* Estilos para as categorias */
+.categoria {
+  margin-bottom: 40px;
+}
+
+.categoria h2 {
   font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-/* Listagem de Produtos */
-.produtos-list {
+/* Scroll horizontal dos produtos dentro das categorias */
+.livros-scroll {
   display: flex;
-  flex-wrap: nowrap; /* Removido wrap para uma única linha */
   gap: 15px;
-  overflow-x: auto; /* Adicionado para rolagem horizontal */
-  justify-content: space-between;
-  width: 125%;
-  margin-left: -135px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-top: 15px;
 }
 
-.produtos-list .produto-item {
+.livros-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.livros-scroll::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.livros-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Item de produto dentro da rolagem */
+.produto-item {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
-  min-width: 300px; /* Ajustado para garantir largura mínima */
+  min-width: 300px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
 }
 
-.produtos-list .produto-item:hover {
+.produto-item:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.produtos-list .produto-item img {
+.produto-item img {
   max-width: 100%;
   height: 300px;
   width: 200px;
   border-radius: 5px;
 }
 
-.produtos-list .produto-item h3 {
-  font-size: 1.5rem; /* Aumenta um pouco o tamanho do título */
+.produto-item h3 {
+  font-size: 1.5rem;
   margin: 10px 0;
-  color: #333; /* Cor neutra para contraste */
-  font-family: 'Georgia', serif; /* Harmoniza com a logo */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Suave sombra para destaque */
+  color: #333;
+  font-family: 'Georgia', serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
-.produtos-list .produto-item p {
+
+.produto-item p {
   font-size: 1rem;
 }
-/* Autor dos Livros */
-.produtos-list .produto-item .produto-autor {
-  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
-  color: #333; /* Cor neutra e legível */
+
+.produto-autor {
+  font-size: 1.2rem;
+  color: #333;
   margin: 5px 0;
-  font-weight: 600; /* Peso mais forte para maior destaque */
+  font-weight: 600;
 }
 
-
-.produtos-list .botao-comprar {
+.botao-comprar {
   background-color: #0073e6;
   color: white;
   border: none;
@@ -130,19 +145,19 @@
   transition: background-color 0.3s;
 }
 
-.produtos-list .botao-comprar:hover {
+.botao-comprar:hover {
   background-color: #005bb5;
 }
 
 /* Preço dos Livros */
-.produtos-list .produto-item .produto-preco {
-  font-size: 1.8rem; /* Destaca o preço */
-  color: #D32F2F; /* Vermelho Black Friday */
+.produto-preco {
+  font-size: 1.8rem;
+  color: #D32F2F;
   font-weight: bold;
   display: inline-block;
-  
-  animation: pulse 1s infinite; /* Animação para chamar atenção */
+  animation: pulse 1s infinite;
 }
+
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -152,16 +167,26 @@
   }
 }
 
-
+/* Imagem promocional */
 .publi {
   display: block;
-  width: 100%; /* Ajuste a largura para metade da tela */
- /* max-width: 600px; *//* Limita o tamanho máximo da imagem */
-  height: auto; /* Mantém a proporção original */
-  margin: 20px auto; /* Centraliza a imagem horizontalmente e adiciona espaçamento vertical */
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
   padding: 0;
-  border: 2px solid #000; /* Adiciona borda para destaque */
-  border-radius: 10px; /* Cantos arredondados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar um leve destaque */
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Adicionando uma pequena margem entre as categorias */
+.categorias-container .categoria + .categoria {
+  margin-top: 40px;
+}
+
+/* Ajustes para o cabeçalho */
+.site-header .logo h1 {
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  color: white;
+}

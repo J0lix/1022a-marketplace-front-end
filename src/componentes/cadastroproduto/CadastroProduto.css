@@ -145,3 +145,74 @@ input {
   width: 93%; 
   padding-right: 7%;
 }
+
+/* Estilos para o container do select */
+.select-container {
+  margin-bottom: 20px; /* Margem inferior */
+  max-width: 400px; /* Largura máxima do select */
+  margin: 20px auto; /* Centraliza a div horizontalmente */
+}
+
+/* Estilos para o select */
+.select-container select {
+  width: 100%; /* Ocupa toda a largura do container */
+  padding: 10px 15px; /* Espaçamento interno */
+  font-size: 1rem; /* Tamanho de fonte */
+  border: 1px solid #ddd; /* Borda sutil */
+  border-radius: 5px; /* Cantos arredondados */
+  background-color: #fff; /* Fundo branco */
+  color: #333; /* Cor do texto */
+  outline: none; /* Remove o contorno padrão */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Transições suaves */
+}
+
+/* Efeito quando o select é focado */
+.select-container select:focus {
+  border-color: #1486f8; /* Borda azul quando em foco */
+  background-color: #f0f8ff; /* Fundo levemente azul */
+}
+
+/* Estilos para as opções dentro do select */
+.select-container select option {
+  font-size: 1rem; /* Tamanho da fonte das opções */
+  padding: 10px; /* Espaçamento interno das opções */
+  background-color: #fff; /* Cor de fundo das opções */
+  color: #333; /* Cor do texto */
+}
+
+/* Efeito ao passar o mouse sobre as opções */
+.select-container select option:hover {
+  background-color: #f1f1f1; /* Cor de fundo suave ao passar o mouse */
+}
+
+/* Estilos para a primeira opção (placeholder) */
+.select-container select option:first-child {
+  font-weight: bold; /* Deixa a primeira opção em negrito */
+  color: #888; /* Cor cinza para o placeholder */
+}
+.cadastro-container textarea {
+  width: 94%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+   height: 100px;
+  resize: none;
+  font-family: 'Arial', sans-serif;
+}
+.site-header .voltar-botao {
+  background-color: #0073e6;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+  border: 1px solid #0073e6;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.site-header .voltar-botao:hover {
+  background-color: #005bb5;
+  color: white;
+}

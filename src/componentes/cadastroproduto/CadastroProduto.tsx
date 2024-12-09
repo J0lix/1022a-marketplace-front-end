@@ -1,78 +1,81 @@
-// Importações necessárias
-import { ChangeEvent, FormEvent, useState } from "react"; // Hooks do React para gerenciar estado e eventos
-import { useNavigate, Link } from 'react-router-dom'; // Ferramentas de navegação do React Router
-import './CadastroProduto.css'; // Estilos específicos para a página de cadastro
+import { ChangeEvent, FormEvent, useState, useEffect } from "react"; 
+import { useNavigate, Link } from 'react-router-dom'; 
+import './CadastroProduto.css'; 
 
-// Componente principal: CadastroProduto
+// Definição do tipo de categoria
+interface Categoria {
+    id: string;
+    nome: string;
+}
+
 function CadastroProduto() {
-    // Navegação para redirecionar após o cadastro
     const navigate = useNavigate();
 
-    // Estados para armazenar os dados inseridos no formulário
+    // Estados para armazenar os dados do livro
     const [id, setId] = useState("");
     const [titulo, setTitulo] = useState("");
     const [autor, setAutor] = useState("");
     const [preco, setPreco] = useState("");
     const [imagem, setImagem] = useState("");
+    const[descricao, setDescricao] = useState("");
+    const [categoria_id, setCategoriaId] = useState(""); // Estado para armazenar a categoria selecionada
+    const [categorias, setCategorias] = useState<Categoria[]>([]); // Estado para armazenar as categorias carregadas
+
+    // Função para carregar as categorias do banco de dados
+    useEffect(() => {
+        async function fetchCategorias() {
+            try {
+                const resposta = await fetch("https://one022a-marketplace-33kr.onrender.com/categorias"); // Corrigir o endpoint, caso seja necessário
+                const categoriasData: Categoria[] = await resposta.json(); // Tipando a resposta como um array de Categoria
+
+                // Verifica se a resposta tem o formato esperado
+                if (Array.isArray(categoriasData)) {
+                    setCategorias(categoriasData);
+                } else {
+                    alert("Erro ao carregar categorias: dados não no formato esperado.");
+                }
+            } catch (e) {
+                alert("Erro ao carregar categorias");
+            }
+        }
+        fetchCategorias();
+    }, []);
 
     // Função chamada ao enviar o formulário
     async function handleForm(event: FormEvent) {
-        event.preventDefault(); // Previne o comportamento padrão de recarregar a página
+        event.preventDefault();
 
         try {
             // Faz uma requisição POST para a API para cadastrar um novo livro
-            const resposta = await fetch("https://one022a-marketplace-33kr.onrender.com/livros", {
-                method: "POST", // Método HTTP POST para envio de dados
+            const resposta = await fetch("https://one022a-marketplace-33kr.onrender.com/livros", { // Alterar endpoint para onde o livro é cadastrado
+                method: "POST",
                 headers: {
-                    "Content-Type": "application/json" // Indica que o corpo da requisição é JSON
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    id: id, // Dados do livro
+                    id: id,
                     titulo: titulo,
                     autor: autor,
                     preco: preco,
-                    imagem: imagem
+                    imagem: imagem,
+                    categoria_id: categoria_id
                 })
             });
 
-            // Verifica o status da resposta
-            if (resposta.status === 201) { // Cadastro bem-sucedido
+            if (resposta.status === 201) {
                 alert("Livro Cadastrado Com Sucesso");
                 navigate("/"); // Redireciona para a página inicial
-            } else { // Erro ao cadastrar
+            } else {
                 const mensagem = await resposta.text();
                 alert("Erro ao Cadastrar livro - Error: " + mensagem);
             }
-        } catch (e) { // Tratamento de erro em caso de falha na conexão com o servidor
+        } catch (e) {
             alert("Servidor não está respondendo.");
         }
     }
 
-    // Funções para atualizar os estados com os valores digitados nos campos do formulário
-    function handleId(event: ChangeEvent<HTMLInputElement>) {
-        setId(event.target.value);
-    }
-
-    function handleTitulo(event: ChangeEvent<HTMLInputElement>) {
-        setTitulo(event.target.value);
-    }
-
-    function handleAutor(event: ChangeEvent<HTMLInputElement>) {
-        setAutor(event.target.value);
-    }
-
-    function handlePreco(event: ChangeEvent<HTMLInputElement>) {
-        setPreco(event.target.value);
-    }
-
-    function handleImagem(event: ChangeEvent<HTMLInputElement>) {
-        setImagem(event.target.value);
-    }
-
-    // JSX do componente: estrutura da página de cadastro
     return (
         <>
-            {/* Cabeçalho da página */}
             <header className="site-header">
                 <div className="logo">
                     <h1>Aurea Books</h1>
@@ -83,37 +86,79 @@ function CadastroProduto() {
                         <li><a href="#produtos">Produtos</a></li>
                         <li><a href="#sobre">Sobre</a></li>
                         <li><a href="#contato">Contato</a></li>
-                        <li><Link to={"/cadastro-produto"} className="cadastro-botao">Cadastrar Livros</Link></li>
+                        <li><Link to={"/"} className="voltar-botao">Voltar</Link></li>
                     </ul>
                 </nav>
             </header>
 
-            {/* Container principal do formulário */}
             <div className="cadastro-container">
                 <h1>Cadastro de Livro</h1>
                 <form onSubmit={handleForm}>
-                    {/* Campos do formulário */}
                     <div>
-                        <input placeholder="Id" type="text" name="id" id="id" onChange={handleId} />
+                        <input 
+                            placeholder="Id" 
+                            type="text" 
+                            value={id} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setId(e.target.value)} 
+                        />
                     </div>
                     <div>
-                        <input placeholder="Título" type="text" name="titulo" id="titulo" onChange={handleTitulo} />
+                        <input 
+                            placeholder="Título" 
+                            type="text" 
+                            value={titulo} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setTitulo(e.target.value)} 
+                        />
                     </div>
                     <div>
-                        <input placeholder="Autor" type="text" name="autor" id="autor" onChange={handleAutor} />
+                        <input 
+                            placeholder="Autor" 
+                            type="text" 
+                            value={autor} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setAutor(e.target.value)} 
+                        />
                     </div>
                     <div>
-                        <input placeholder="Preço" type="text" name="preco" id="preco" onChange={handlePreco} />
+                        <input 
+                            placeholder="Preço" 
+                            type="text" 
+                            value={preco} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setPreco(e.target.value)} 
+                        />
                     </div>
                     <div>
-                        <input placeholder="URL Imagem" type="text" name="imagem" id="imagem" onChange={handleImagem} />
+                        <input 
+                            placeholder="URL Imagem" 
+                            type="text" 
+                            value={imagem} 
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setImagem(e.target.value)} 
+                        />
                     </div>
-                    {/* Botão para submeter o formulário */}
+                    <div>
+  <textarea 
+    placeholder="Descrição" 
+    value={descricao} 
+    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescricao(e.target.value)} 
+  />
+</div>
+
+
+                    {/* Campo de Seleção de Categoria */}
+                    <div className="select-container">
+  <select onChange={(e) => setCategoriaId(e.target.value)} value={categoria_id}>
+    <option value="">Selecione a Categoria</option>
+    {categorias.map((categoria) => (
+      <option key={categoria.id} value={categoria.id}>
+        {categoria.nome}
+      </option>
+    ))}
+  </select>
+</div>
+
                     <input type="submit" value="Cadastrar" />
                 </form>
             </div>
 
-            {/* Rodapé da página */}
             <footer className="site-footer">
                 <p>&copy; 2024 Aurea Books. Todos os direitos reservados.</p>
                 <p>Criadoras: Bianca de Oliveira Moraes e Júlia Strey Bem</p>

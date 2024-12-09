@@ -7,6 +7,19 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import CadastroProduto from './componentes/cadastroproduto/CadastroProduto.tsx';
+<<<<<<< HEAD
+=======
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+  {
+    path: "/cadastro-produto",
+    element: <CadastroProduto/>,
+  },
+]);
+>>>>>>> 612c28cfe3f2d74d787c77bbfb3f65369a6da7d7
 
 const router = createBrowserRouter([
   {
@@ -20,6 +33,10 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+<<<<<<< HEAD
     <RouterProvider router ={router} />
+=======
+    <RouterProvider router={router} />
+>>>>>>> 612c28cfe3f2d74d787c77bbfb3f65369a6da7d7
   </StrictMode>,
 )

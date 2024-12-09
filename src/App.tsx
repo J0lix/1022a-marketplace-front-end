@@ -1,21 +1,7 @@
-<<<<<<< HEAD
 // Importação de bibliotecas essenciais
 import { useEffect, useState } from 'react'; // Hooks do React para efeitos colaterais e gerenciamento de estado
 import { Link } from 'react-router-dom'; // Ferramenta para navegação entre páginas
 import './App.css'; // Arquivo de estilos específicos para o componente
-=======
-import { useEffect, useState } from 'react'
-import './App.css'
-import { Link } from 'react-router-dom'
-// Tipo para produtos
-type ProdutoType = {
-  id: number,
-  nome: string,
-  preco: string,
-  descricao: string,
-  imagem: string
-}
->>>>>>> 612c28cfe3f2d74d787c77bbfb3f65369a6da7d7
 
 // Tipo para definir o formato de um produto
 type ProdutoType = {
@@ -32,18 +18,10 @@ function App() {
 
   // Hook para carregar os produtos da API quando o componente for montado
   useEffect(() => {
-<<<<<<< Updated upstream
     fetch("https://one022a-marketplace-33kr.onrender.com/livros") // Faz uma requisição para a API
       .then(resposta => resposta.json()) // Converte a resposta para JSON
       .then(dados => setProdutos(dados)); // Atualiza o estado com os produtos recebidos
   });
-=======
-    // Buscar os produtos
-    fetch("https://one022a-marketplace-33kr.onrender.com/livros")
-      .then(resposta => resposta.json())
-      .then(dados => setProdutos(dados))
-  })
->>>>>>> Stashed changes
 
   return (
     <>
@@ -53,40 +31,26 @@ function App() {
           <h1>Aurea Books</h1> {/* Nome do site */}
         </div>
         <nav className="navigation">
-<<<<<<< Updated upstream
           {/* Campo de busca de livros */}
           <div className="search-container">
             <input type="text" placeholder="Buscar livro..." /> {/* Campo de texto */}
             <button>Buscar</button> {/* Botão de busca */}
           </div>
           {/* Links de navegação */}
-=======
-
-        
->>>>>>> Stashed changes
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#produtos">Produtos</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#contato">Contato</a></li>
-<<<<<<< HEAD
             <li><Link to={"/cadastro-produto"} className="cadastro-botao">Cadastrar Livros</Link></li>
-=======
-            <Link to="/cadastro-produto">Cadastro de Produto</Link>
->>>>>>> 612c28cfe3f2d74d787c77bbfb3f65369a6da7d7
           </ul>
         </nav>
       </header>
 
       {/* Listagem de Produtos */}
       <div className="produtos-container">
-<<<<<<< HEAD
         <img src="publi.png" alt="aparece pfv" className="publi" /> {/* Imagem promocional */}
         <h1 className='titulo-produto'>Livros</h1> {/* Título da seção */}
-=======
-      <Link to="/cadastro-produto">Cadastro de Produto</Link>
-        <h1 className='titulo-produto'>Produtos</h1>
->>>>>>> 612c28cfe3f2d74d787c77bbfb3f65369a6da7d7
         <div className="produtos-list">
           {/* Renderização da lista de produtos */}
           {

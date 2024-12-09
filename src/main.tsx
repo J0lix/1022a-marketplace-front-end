@@ -20,17 +20,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App/>,
-  },
-  {
-    path: "/cadastro-produto",
-    element: <CadastroProduto/>,
-  },
-]);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
 

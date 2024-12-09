@@ -31,11 +31,7 @@ function App() {
           <h1>Aurea Books</h1> {/* Nome do site */}
         </div>
         <nav className="navigation">
-          {/* Campo de busca de livros */}
-          <div className="search-container">
-            <input type="text" placeholder="Buscar livro..." /> {/* Campo de texto */}
-            <button>Buscar</button> {/* Botão de busca */}
-          </div>
+        
           {/* Links de navegação */}
           <ul>
             <li><a href="#home">Home</a></li>

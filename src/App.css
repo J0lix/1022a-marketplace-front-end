@@ -164,39 +164,4 @@
   border-radius: 10px; /* Cantos arredondados */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar um leve destaque */
 }
-/* Barra de pesquisa */
-.search-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 300px;
-  margin-right: 20px; /* Espaçamento à direita da barra */
-  border: 2px solid #ccc;
-  border-radius: 25px;
-  padding: 5px 10px;
-  background-color: white;
-}
 
-.search-container input[type="text"] {
-  border: none;
-  outline: none;
-  padding: 10px;
-  font-size: 16px;
-  flex: 1;
-  border-radius: 20px;
-}
-
-.search-container button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.search-container button:hover {
-  background-color: #45a049;
-}

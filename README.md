@@ -4,7 +4,7 @@ Back-End:
 Ligue o Laragon;
 Abra o VS Code;
 Abra a pasta “1022A-marketplace”;
-Abra o terminal e digite: npm install;
+Abra o terminal e digite: npm install e npm run dev
 
 Front-End:
 Abra o VS Code;

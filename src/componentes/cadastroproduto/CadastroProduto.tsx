@@ -58,7 +58,9 @@ function CadastroProduto() {
                     autor: autor,
                     preco: preco,
                     imagem: imagem,
-                    categoria_id: categoria_id
+                    categoria_id: categoria_id,
+                    descricao: descricao
+
                 })
             });
 

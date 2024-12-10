@@ -180,9 +180,10 @@
 /* Imagem promocional */
 .publi {
   display: block;
-  width: 100%;
-  height: auto;
-  margin: 20px auto;
+  width: 100%;           /* Ocupa a largura completa do container */
+  max-width: 1100px;     /* Limita a largura máxima ao mesmo valor do container de produtos */
+  height: auto;          /* Mantém a altura proporcional à largura da imagem */
+  margin: 20px auto;     /* Centraliza a imagem com margem acima e abaixo */
   padding: 0;
   border: 2px solid #000;
   border-radius: 10px;

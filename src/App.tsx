@@ -61,6 +61,11 @@ function App() {
           </ul>
         </nav>
       </header>
+      
+         {/* Publicidade logo abaixo do cabeçalho */}
+         <div className="publicidade-container">
+        <img src="publi.png" alt="Publicidade" className="publi" />
+      </div>
 
       {/* Seção de Categorias de Livros */}
       <div className="categorias-container">

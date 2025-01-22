@@ -25,12 +25,12 @@ function App() {
   // Carregar produtos e categorias da API
   useEffect(() => {
     // Carregar livros
-    fetch("https://one022a-marketplace-33kr.onrender.com/livros")
+    fetch("https://maketplace-livraria.onrender.com/livros")
       .then(resposta => resposta.json())
       .then(dados => setProdutos(dados));
 
     // Carregar categorias
-    fetch("https://one022a-marketplace-33kr.onrender.com/categorias")
+    fetch("https://maketplace-livraria.onrender.com/categorias")
       .then(resposta => resposta.json())
       .then(dados => setCategorias(dados));
   }, []);

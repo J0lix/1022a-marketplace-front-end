@@ -196,3 +196,140 @@
 }
 
 /* Ajustes para o cabeçalho */
+
+
+
+
+
+
+/* Botão Comprar */
+.botao-comprar {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%; /* Ocupa toda a largura do card */
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+}
+
+.botao-comprar:hover {
+  background-color: #005bb5;
+  transform: scale(1.05); /* Efeito de destaque */
+}
+
+/* Botão Excluir Livro */
+.botao-excluir-livro {
+  background-color: #FF6B6B;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1; /* Divide o espaço igualmente com o botão Alterar */
+  margin-right: 10px; /* Espaço entre os botões */
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+}
+
+.botao-excluir-livro:hover {
+  background-color: #E63946;
+  transform: scale(1.05);
+}
+
+/* Botão Alterar */
+.botao-alterar {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1; /* Divide o espaço igualmente com o botão Excluir */
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+}
+
+.botao-alterar:hover {
+  background-color: #388E3C;
+  transform: scale(1.05);
+}
+
+/* Contêiner dos botões Excluir e Alterar */
+.botoes-container {
+  display: flex; /* Alinha os botões lado a lado */
+  margin-top: 10px;
+}
+/* Estilos para os botões de Excluir e Alterar Categoria */
+.botoes-categoria-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Container das ações de categoria */
+.categoria-acoes {
+  display: flex;
+  gap: 15px; /* Espaçamento entre os botões */
+  margin-bottom: 15px;
+}
+
+/* Estilização base para os botões de categoria */
+.categoria-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  text-decoration: none; /* Se for link */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra com blur */
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Tamanho do ícone */
+.categoria-btn .icon {
+  font-size: 1.2rem;
+}
+
+/* Efeito hover para ambos os botões */
+.categoria-btn:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Botão de exclusão (categoria) */
+.categoria-btn.excluir {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.categoria-btn.excluir:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Botão de alteração (categoria) */
+.categoria-btn.alterar {
+  border-color: #2ecc71;
+  color: #2ecc71;
+}
+
+.categoria-btn.alterar:hover {
+  background-color: #2ecc71;
+  color: #fff;
+}

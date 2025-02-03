@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaTrash, FaEdit } from 'react-icons/fa'; // Importação dos ícones
 import './App.css';
 
 type ProdutoType = {
@@ -18,35 +19,61 @@ type CategoriaType = {
 };
 
 function App() {
-  // Estados para armazenar livros e categorias
-  const [produtos, setProdutos] = useState<ProdutoType[]>([]);
+  const [livros, setLivros] = useState<ProdutoType[]>([]);
   const [categorias, setCategorias] = useState<CategoriaType[]>([]);
 
-  // Carregar produtos e categorias da API
   useEffect(() => {
-    // Carregar livros
-    fetch("https://maketplace-livraria.onrender.com/livros")
-      .then(resposta => resposta.json())
-      .then(dados => setProdutos(dados));
+    fetch("http://localhost:8000/livros")
+      .then((resposta) => resposta.json())
+      .then((dados) => setLivros(dados));
 
-    // Carregar categorias
-    fetch("https://maketplace-livraria.onrender.com/categorias")
-      .then(resposta => resposta.json())
-      .then(dados => setCategorias(dados));
+    fetch("http://localhost:8000/categorias")
+      .then((resposta) => resposta.json())
+      .then((dados) => setCategorias(dados));
   }, []);
 
-  // Agrupar livros por categoria
-  const livrosPorCategoria = categorias.map(categoria => {
-    const livrosDaCategoria = produtos.filter(produto => produto.categoria_id === categoria.id);
+  function handleExcluirLivro(id: number) {
+    if (window.confirm(`Tem certeza que deseja excluir o livro com id ${id}?`)) {
+      fetch(`http://localhost:8000/livros/${id}`, {
+        method: 'DELETE',
+      })
+        .then((resposta) => {
+          if (resposta.ok) {
+            alert('Produto excluído com sucesso');
+            setLivros((livros) => livros.filter((livro) => livro.id !== id));
+          } else {
+            alert('Erro ao excluir o produto: Confira o terminal do backend');
+          }
+        });
+    }
+  }
+
+  function handleExcluirCategoria(id: number) {
+    if (window.confirm(`Tem certeza que deseja excluir a categoria com id ${id}?`)) {
+      fetch(`http://localhost:8000/categorias/${id}`, {
+        method: 'DELETE',
+      })
+        .then((resposta) => {
+          if (resposta.ok) {
+            alert('Categoria excluída com sucesso');
+            setCategorias((categorias) => categorias.filter((categoria) => categoria.id !== id));
+          } else {
+            alert('Não é possível excluir uma categoria que contenha livros!');
+          }
+        });
+    }
+  }
+
+  const livrosPorCategoria = categorias.map((categoria) => {
+    const livrosDaCategoria = livros.filter((livro) => livro.categoria_id === categoria.id);
     return {
       categoria,
-      livros: livrosDaCategoria
+      livros: livrosDaCategoria,
     };
   });
 
   return (
     <>
-      {/* Cabeçalho do site */}
       <header className="site-header">
         <div className="logo">
           <h1>Aurea Books</h1>
@@ -57,32 +84,66 @@ function App() {
             <li><a href="#produtos">Produtos</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#contato">Contato</a></li>
-            <li><Link to={"/cadastro-produto"} className="cadastro-botao">Cadastrar Livros</Link></li>
+            <li>
+              <Link to="/cadastro-produto" className="cadastro-botao">
+                Cadastrar Livros
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
-      
-         {/* Publicidade logo abaixo do cabeçalho */}
-         <div className="publicidade-container">
+
+      <div className="publicidade-container">
         <img src="publi.png" alt="Publicidade" className="publi" />
       </div>
 
-      {/* Seção de Categorias de Livros */}
       <div className="categorias-container">
         {livrosPorCategoria.map((categoriaComLivros) => (
           <div key={categoriaComLivros.categoria.id} className="categoria">
             <h2>{categoriaComLivros.categoria.nome}</h2>
+            {/* Seção de ações para categorias com estilo diferenciado */}
+            <div className="categoria-acoes">
+              <button
+                className="categoria-btn excluir"
+                onClick={() => handleExcluirCategoria(categoriaComLivros.categoria.id)}
+                aria-label="Excluir Categoria"
+              > <FaTrash className="icon" />
+                <span>Deletar</span>
+              </button>
+              <Link
+                to={`/alterar-categoria/${categoriaComLivros.categoria.id}`}
+                className="categoria-btn alterar"
+                aria-label="Alterar Categoria"
+              >
+                <FaEdit className="icon" />
+                <span>Alterar</span>
+              </Link>
+            </div>
             <div className="livros-scroll">
               {categoriaComLivros.livros.map((produto) => (
                 <div key={produto.id} className="produto-item">
                   <h3 className="produto-titulo">{produto.titulo}</h3>
-                  <div className='container-imagem'>
+                  <div className="container-imagem">
                     <img src={produto.imagem} alt={produto.titulo} />
                   </div>
                   <p className="produto-preco">R$ {produto.preco}</p>
-                  <p className="produto-autor"><strong> Autor: </strong> {produto.autor}</p>
-                  <p className="produto-descricao"><strong> Descrição: </strong>{produto.descricao}</p>
+                  <p className="produto-autor"><strong>Autor:</strong> {produto.autor}</p>
+                  <p className="produto-descricao"><strong>Descrição:</strong> {produto.descricao}</p>
                   <button className="botao-comprar">Comprar</button>
+                  <div className="botoes-container">
+                    <button
+                      className="botao-excluir-livro"
+                      onClick={() => handleExcluirLivro(produto.id)}
+                      aria-label="Excluir Livro"
+                    >Excluir <FaTrash />
+                    </button>
+                    <Link
+                      to={`/alterar-produto/${produto.id}`}
+                      className="botao-alterar"
+                      aria-label="Alterar Livro"
+                    >Alterar <FaEdit />
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -90,7 +151,6 @@ function App() {
         ))}
       </div>
 
-      {/* Rodapé do site */}
       <footer className="site-footer">
         <p>&copy; 2024 Aurea Books. Todos os direitos reservados.</p>
         <p>Criadoras: Bianca de Oliveira Moraes e Júlia Strey Bem</p>

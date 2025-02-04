@@ -18,7 +18,7 @@ function AlterarCategoria() {
 
     // Buscar dados da categoria específica
     useEffect(() => {
-        fetch(`http://localhost:8000/categorias/${id}`)
+        fetch(`https://maketplace-livraria.onrender.com/categorias/${id}`)
             .then(resposta => resposta.json())
             .then((dados: Categoria) => {
                 setNome(dados.nome);
@@ -29,7 +29,7 @@ function AlterarCategoria() {
     async function handleForm(event: FormEvent) {
         event.preventDefault();
         try {
-            const resposta = await fetch(`http://localhost:8000/categorias/${id}`, {
+            const resposta = await fetch(`https://maketplace-livraria.onrender.com/categorias/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

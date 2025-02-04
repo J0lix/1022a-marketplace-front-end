@@ -26,7 +26,7 @@ function AlterarLivro() {
 
   // Buscar dados do livro específico
   useEffect(() => {
-    fetch(`http://localhost:8000/livros/${id}`)
+    fetch(`https://maketplace-livraria.onrender.com/livros/${id}`)
       .then(resposta => resposta.json())
       .then(dados => {
         console.log('Dados retornados:', dados);
@@ -41,7 +41,7 @@ function AlterarLivro() {
 
   // Buscar todas as categorias disponíveis
   useEffect(() => {
-    fetch(`http://localhost:8000/categorias`)
+    fetch(`https://maketplace-livraria.onrender.com/categorias`)
       .then(resposta => resposta.json())
       .then((dados: Categoria[]) => setCategorias(dados));
   }, []);
@@ -49,7 +49,7 @@ function AlterarLivro() {
   async function handleForm(event: FormEvent) {
     event.preventDefault();
     try {
-      const resposta = await fetch(`http://localhost:8000/livros/${id}`, {
+      const resposta = await fetch(`https://maketplace-livraria.onrender.com/livros/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

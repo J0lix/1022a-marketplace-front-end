@@ -25,7 +25,7 @@ function CadastroProduto() {
     useEffect(() => {
         async function fetchCategorias() {
             try {
-                const resposta = await fetch("http://localhost:8000/categorias"); // Corrigir o endpoint, caso seja necessário
+                const resposta = await fetch("https://maketplace-livraria.onrender.com/categorias"); // Corrigir o endpoint, caso seja necessário
                 const categoriasData: Categoria[] = await resposta.json(); // Tipando a resposta como um array de Categoria
 
                 // Verifica se a resposta tem o formato esperado
@@ -47,7 +47,7 @@ function CadastroProduto() {
 
         try {
             // Faz uma requisição POST para a API para cadastrar um novo livro
-            const resposta = await fetch("http://localhost:8000/livros", { // Alterar endpoint para onde o livro é cadastrado
+            const resposta = await fetch("https://maketplace-livraria.onrender.com/livros", { // Alterar endpoint para onde o livro é cadastrado
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

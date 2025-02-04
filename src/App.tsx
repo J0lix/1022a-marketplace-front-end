@@ -23,18 +23,18 @@ function App() {
   const [categorias, setCategorias] = useState<CategoriaType[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/livros")
+    fetch("https://maketplace-livraria.onrender.com/livros")
       .then((resposta) => resposta.json())
       .then((dados) => setLivros(dados));
 
-    fetch("http://localhost:8000/categorias")
+    fetch("https://maketplace-livraria.onrender.com/categorias")
       .then((resposta) => resposta.json())
       .then((dados) => setCategorias(dados));
   }, []);
 
   function handleExcluirLivro(id: number) {
     if (window.confirm(`Tem certeza que deseja excluir o livro com id ${id}?`)) {
-      fetch(`http://localhost:8000/livros/${id}`, {
+      fetch(`https://maketplace-livraria.onrender.com/livros/${id}`, {
         method: 'DELETE',
       })
         .then((resposta) => {
@@ -50,7 +50,7 @@ function App() {
 
   function handleExcluirCategoria(id: number) {
     if (window.confirm(`Tem certeza que deseja excluir a categoria com id ${id}?`)) {
-      fetch(`http://localhost:8000/categorias/${id}`, {
+      fetch(`https://maketplace-livraria.onrender.com/categorias/${id}`, {
         method: 'DELETE',
       })
         .then((resposta) => {

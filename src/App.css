@@ -23,7 +23,6 @@
   margin: 0; /* Remove margens indesejadas */
 }
 
-
 .site-header .navigation {
   position: absolute;
   right: 20px;
@@ -111,6 +110,10 @@
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
+  
+  /* Novas propriedades para garantir layout consistente */
+  display: flex;
+  flex-direction: column;
 }
 
 .produto-item:hover {
@@ -143,20 +146,25 @@
   font-weight: 600;
 }
 
+/* Botão Comprar */
 .botao-comprar {
   background-color: #0073e6;
   color: white;
   border: none;
   padding: 10px 15px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  width: 100%; /* Ocupa toda a largura do card */
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
 }
 
 .botao-comprar:hover {
   background-color: #005bb5;
+  transform: scale(1.05); /* Efeito de destaque */
 }
 
 /* Preço dos Livros */
@@ -193,34 +201,6 @@
 /* Adicionando uma pequena margem entre as categorias */
 .categorias-container .categoria + .categoria {
   margin-top: 40px;
-}
-
-/* Ajustes para o cabeçalho */
-
-
-
-
-
-
-/* Botão Comprar */
-.botao-comprar {
-  background-color: #0073e6;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%; /* Ocupa toda a largura do card */
-  margin-top: 10px;
-  transition: background-color 0.3s, transform 0.2s;
-  text-align: center;
-}
-
-.botao-comprar:hover {
-  background-color: #005bb5;
-  transform: scale(1.05); /* Efeito de destaque */
 }
 
 /* Botão Excluir Livro */
@@ -265,10 +245,13 @@
 }
 
 /* Contêiner dos botões Excluir e Alterar */
+/* Alteração: adicionando margin-top: auto para empurrar os botões para o fim do cartão */
 .botoes-container {
   display: flex; /* Alinha os botões lado a lado */
-  margin-top: 10px;
+  margin-top: auto;
+  gap: 10px; /* Espaçamento entre os botões */
 }
+
 /* Estilos para os botões de Excluir e Alterar Categoria */
 .botoes-categoria-container {
   display: flex;

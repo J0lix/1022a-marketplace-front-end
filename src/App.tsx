@@ -128,7 +128,9 @@ function App() {
                   </div>
                   <p className="produto-preco">R$ {produto.preco}</p>
                   <p className="produto-autor"><strong>Autor:</strong> {produto.autor}</p>
-                  <p className="produto-descricao"><strong>Descrição:</strong> {produto.descricao}</p>
+                  <p className="produto-descricao">
+  <strong>Descrição:</strong> Exemplo de descrição para teste.
+</p>
                   <button className="botao-comprar">Comprar</button>
                   <div className="botoes-container">
                     <button

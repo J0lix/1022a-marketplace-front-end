@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { FormEvent, useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './AlterarProduto.css'
 
 // Definição da interface para categoria
@@ -77,6 +77,22 @@ function AlterarLivro() {
   }
 
   return (
+    <>
+      <header className="site-header">
+                    <div className="logo">
+                        <h1>Aurea Books</h1>
+                    </div>
+                    <nav className="navigation">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#produtos">Produtos</a></li>
+                            <li><a href="#sobre">Sobre</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                            <li><Link to={"/"} className="voltar-botao">Voltar</Link></li>
+                        </ul>
+                    </nav>
+                </header>
+
     <div className="cadastro-container">
       <h1>Alterar Livro</h1>
       <form onSubmit={handleForm}>
@@ -143,6 +159,7 @@ function AlterarLivro() {
         <input type="submit" value="Alterar Livro" />
       </form>
     </div>
+    </>
   );
 }
 

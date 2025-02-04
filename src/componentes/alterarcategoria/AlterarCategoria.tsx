@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { FormEvent, useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './AlterarCategoria.css'; // Importando o CSS
 
 // Definição da interface para categoria
@@ -52,6 +52,21 @@ function AlterarCategoria() {
     }
 
     return (
+        <>
+         <header className="site-header">
+                            <div className="logo">
+                                <h1>Aurea Books</h1>
+                            </div>
+                            <nav className="navigation">
+                                <ul>
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#produtos">Produtos</a></li>
+                                    <li><a href="#sobre">Sobre</a></li>
+                                    <li><a href="#contato">Contato</a></li>
+                                    <li><Link to={"/"} className="voltar-botao">Voltar</Link></li>
+                                </ul>
+                            </nav>
+                        </header>
         <div className="cadastro-container">
             <h1>Alterar Categoria</h1>
             <form onSubmit={handleForm}>
@@ -72,6 +87,7 @@ function AlterarCategoria() {
                 <input type="submit" value="Alterar Categoria" />
             </form>
         </div>
+        </>
     );
 }
 

@@ -122,31 +122,33 @@ function App() {
             <div className="livros-scroll">
               {categoriaComLivros.livros.map((produto) => (
                 <div key={produto.id} className="produto-item">
+                <div className="produto-info">
                   <h3 className="produto-titulo">{produto.titulo}</h3>
                   <div className="container-imagem">
                     <img src={produto.imagem} alt={produto.titulo} />
                   </div>
                   <p className="produto-preco">R$ {produto.preco}</p>
                   <p className="produto-autor"><strong>Autor:</strong> {produto.autor}</p>
-                  <p className="produto-descricao">
-  <strong>Descrição:</strong> Exemplo de descrição para teste.
-</p>
-                  <button className="botao-comprar">Comprar</button>
-                  <div className="botoes-container">
-                    <button
-                      className="botao-excluir-livro"
-                      onClick={() => handleExcluirLivro(produto.id)}
-                      aria-label="Excluir Livro"
-                    >Excluir <FaTrash />
-                    </button>
-                    <Link
-                      to={`/alterar-produto/${produto.id}`}
-                      className="botao-alterar"
-                      aria-label="Alterar Livro"
-                    >Alterar <FaEdit />
-                    </Link>
-                  </div>
+                  <p className="produto-descricao"><strong>Descrição:</strong> {produto.descricao}</p>
                 </div>
+                <button className="botao-comprar">Comprar</button>
+                <div className="botoes-container">
+                  <button
+                    className="botao-excluir-livro"
+                    onClick={() => handleExcluirLivro(produto.id)}
+                    aria-label="Excluir Livro"
+                  >
+                    Excluir <FaTrash />
+                  </button>
+                  <Link
+                    to={`/alterar-produto/${produto.id}`}
+                    className="botao-alterar"
+                    aria-label="Alterar Livro"
+                  >
+                    Alterar <FaEdit />
+                  </Link>
+                </div>
+              </div>
               ))}
             </div>
           </div>

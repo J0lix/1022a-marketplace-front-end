@@ -11,6 +11,7 @@ import {
 import CadastroProduto from './componentes/cadastroproduto/CadastroProduto.tsx';
 import AlterarLivro from './componentes/alterarproduto/AlterarProduto.tsx';
 import AlterarCategoria from './componentes/alterarcategoria/AlterarCategoria.tsx';
+import CadastroCategoria from './componentes/cadastrocategoria/CadastroCategoria.tsx';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
     path: "/alterar-categoria/:id",
     element: <AlterarCategoria />,
   },
+  {
+    path: "/cadastro-categoria/",
+    element: <CadastroCategoria />,
+  },
+
 ]);
 
 createRoot(document.getElementById('root')!).render(

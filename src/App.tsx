@@ -74,24 +74,28 @@ function App() {
 
   return (
     <>
-      <header className="site-header">
-        <div className="logo">
-          <h1>Aurea Books</h1>
-        </div>
-        <nav className="navigation">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li>
-              <Link to="/cadastro-produto" className="cadastro-botao">
-                Cadastrar Livros
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+     <header className="site-header">
+  <div className="logo">
+    <h1>Aurea Books</h1>
+  </div>
+  <nav className="navigation">
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li>
+        <Link to="/cadastro-produto" className="cadastro-botao">
+          Cadastrar Livros
+        </Link>
+      </li>
+      <li>
+        <Link to="/cadastro-categoria" className="cadastro-botao">
+          Cadastrar Categoria
+        </Link>
+      </li>
+    </ul>
+  </nav>
+</header>
+
 
       <div className="publicidade-container">
         <img src="publi.png" alt="Publicidade" className="publi" />
